@@ -56,7 +56,7 @@ This lab begins with a basic front-end to display a list of music albums.  As we
 
 ### Project Planning and Approach
 
-####Planning
+#### Planning
 
 When working on large projects, it's important to do a good amount of planning and whiteboarding before you start coding.  
 
@@ -81,7 +81,7 @@ We will also be breaking our work into short **sprints** with specific design go
 
 1. Fork and clone this repository, and `cd` into your local copy.
 1. Run `npm install`, which will:
-  * install back-end packages from package.json
+    * install back-end packages from package.json
 1. Start the server with `node server.js`, `npm start`, or `nodemon`.
 1. View the site at `localhost:3000`.
 1. Read the rest of this readme, then continue to Sprint 1.

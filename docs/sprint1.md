@@ -24,92 +24,93 @@ Let's start on the outside and work our way in.
 
 1. Open `index.html` in your text editor and find the HTML for an **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into a template string using the data structure shown in the array of albums from `app.js`. Leave the `div` with class `albums` in place.
 
-  <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: ``\`${variableName}\``. </details>
+    <details><summary>hint</summary>You'll need to replace the hardcoded sample data with appropriate attribute placeholders.  (You can find the correct attributes in the array of objects provided in `app.js`.) Remember the template string syntax for a variable whose value will be inserted later: <code>`${variableName}`</code>. </details>
 
 1. Open `app.js` and edit the function `renderAlbum` to display one album on the page.  Use your HTML template string and jQuery.
 
 1. Run the `renderAlbum` function when the DOM is ready, and pass in `sampleAlbums[0]` (just one album) to test.  Verify that the page still looks like it did initially.
 
-  <details><summary>hint: calling `renderAlbum`</summary>
+    <details><summary>hint: calling `renderAlbum`</summary>
 
-  ```js
-  $(document).ready(function() {
-    console.log('app.js loaded!');
-    renderAlbum(sampleAlbums[0]);
-  });
-  ```
-  </details>
+    ```js
+    $(document).ready(function() {
+      console.log('app.js loaded!');
+      renderAlbum(sampleAlbums[0]);
+    });
+    ```
+
+    </details>
 
 
 ## Step 1.5: Rendering all the albums.
 
 1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album.
 
-  At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
+    At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
 
-1. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page. 
+1. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page.
 
-<details><summary>Click to see how to request and render all of the albums with a template string</summary>
+  <details><summary>Click to see how to request and render all of the albums with a template string</summary>
 
-```js
-$(document).ready(function() {
-  console.log('app.js loaded!');
+  ```js
+  $(document).ready(function() {
+    console.log('app.js loaded!');
 
-  // make a get request for all albums
-  $.ajax({
-    method: 'GET',
-    url: '/api/albums',
-    success: handleSuccess,
-    error: handleError
+    // make a get request for all albums
+    $.ajax({
+      method: 'GET',
+      url: '/api/albums',
+      success: handleSuccess,
+      error: handleError
+    });
   });
-});
 
-function handleSuccess (albums) {
+  function handleSuccess (albums) {
     albums.forEach(function(album) {
       renderAlbum(album);
     });
-};
+  };
 
-function handleError(err){
-  console.log('There has been an error: ', err);
-}
+  function handleError(err){
+    console.log('There has been an error: ', err);
+  }
 
-// this function takes in a single album and renders it to the page
-function renderAlbum(album) {
-  console.log('rendering album', album);
-  var htmlToAppend = (`
-    <div class='row'>
-      <div class="col-md-3 col-xs-12 thumbnail album-art">
-        <img src="images/800x800.png" alt="album image">
+  // this function takes in a single album and renders it to the page
+  function renderAlbum(album) {
+    console.log('rendering album', album);
+    var htmlToAppend = (`
+      <div class='row'>
+        <div class="col-md-3 col-xs-12 thumbnail album-art">
+          <img src="images/800x800.png" alt="album image">
+        </div>
+
+        <div class="col-md-9 col-xs-12">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h4 class='inline-header'>Album Name:</h4>
+              <span class='album-name'>${album.name}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h4 class='inline-header'>Artist Name:</h4>
+              <span class='artist-name'>${album.artistName}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h4 class='inline-header'>Released date:</h4>
+              <span class='album-releaseDate'>${album.releaseDate}</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
+    `);
 
-      <div class="col-md-9 col-xs-12">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <h4 class='inline-header'>Album Name:</h4>
-            <span class='album-name'>${album.name}</span>
-          </li>
+    $('#albums').prepend(htmlToAppend);
+  };
+  ```
 
-          <li class="list-group-item">
-            <h4 class='inline-header'>Artist Name:</h4>
-            <span class='artist-name'>${album.artistName}</span>
-          </li>
-
-          <li class="list-group-item">
-            <h4 class='inline-header'>Released date:</h4>
-            <span class='album-releaseDate'>${album.releaseDate}</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  `);
-
-  $('#albums').prepend(htmlToAppend);
-};
-
-```
-</details>
+  </details>
 
 Because the GET `/api/albums` route isn't configured yet, our site won't display data anymore. You should now see an error in your console:
 
@@ -141,7 +142,6 @@ We'll use the module pattern to make these "controller" functions available in t
 1. The `$.ajax` call in `app.js` should be functional now! Check in the browser to see that your server-side data is rendering and that the error messages aren't showing up anymore.
 
 ## Step 3: Database Setup
-
 
 1. If you haven't yet, use `npm` to install `mongoose`.  Save it as a dependency of your project with `--save`.
 

@@ -22,7 +22,7 @@ Once again, let's start on the front end by adding a button to delete an album.
 
 1. In your `click` event handler,  determine the album id of the target album to be deleted.  Just `console.log` it for now.
 
-> Pro tip: Notice how we usually just `console.log` things at the beginning?  Testing each little bit of code as you go reduces the amount of code that you're uncertain about.
+  > Pro tip: Notice how we usually just `console.log` things at the beginning?  Testing each little bit of code as you go reduces the amount of code that you're uncertain about.
 
 ## Step 2: Delete Route
 
@@ -30,7 +30,7 @@ Let's add a route for `DELETE /api/albums/:id` to our server.
 
 1. Add the new route on the server side, and start filling in the corresponding method in the albums controller. Start by having the  method `console.log` the album id and respond with a [200 or 204 status code](http://stackoverflow.com/questions/2342579/http-status-code-for-update-and-delete).
 
-  > HTTP DELETE often [doesn't have a defined body.](http://tools.ietf.org/html/rfc7231#section-4.3.5)
+    > HTTP DELETE often [doesn't have a defined body.](http://tools.ietf.org/html/rfc7231#section-4.3.5)
 
 1. Find the `_id` for an album that exists in your database, and use it to test your route with curl or postman.
 
@@ -43,13 +43,13 @@ Now you can tie the previous front-end and back-end changes together.
 
 1. When a user clicks the delete button, send a DELETE request to the server and remove the album from the page.
 
-  > Note jQuery doesn't have a `$.delete` method.  Use `$.ajax`.
+    > Note jQuery doesn't have a `$.delete` method.  Use `$.ajax`.
 
 1. In the client-side code, remove the deleted album from the page.
 
 1. Refresh the page to get the full list of albums back, and make sure albums are truly being deleted.
 
-> If you run out of things to delete, try re-seeding your database.
+    > If you run out of things to delete, try re-seeding your database.
 
 
 ## Stretch Challenges

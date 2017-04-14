@@ -26,9 +26,9 @@ This sprint we will:
 
 1. Edit your `app.js`. When the form is submitted, use jQuery to capture the form values and serialize them.  Start with a  `console.log` of the output. Its format should be similar to this sample serialized form data:
 
-  ```js
-  name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
-  ```
+    ```js
+    name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
+    ```
 
 1. Reset the form input values after the data from the form has been captured or used.
 
@@ -42,18 +42,18 @@ POST  /api/albums
 
 1. In `server.js`, add a new route after the current `GET` `/api/albums` route.  Make a new `create` function in your albums controller to handle this route.  Write a few comments to remind yourself what this route should do.  Start by `console.log`ing a message in this route.  For a response, start by sending back the data the server received.
 
-  > Don't forget to export the `create` function from the controller, or it won't be accessible in `server.js`.
+    > Don't forget to export the `create` function from the controller, or it won't be accessible in `server.js`.
 
 1. If you haven't yet, add the `body-parser` middleware to the server. Remember save `body-parser` into your project's dependencies when you install it.
 
 1. You can test your new route by using AJAX (from your browser's JavaScript console), curl, or Postman.
 
-curl (from Terminal):
-```bash
- curl -X POST http://localhost:3000/api/albums --data "name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop"
-```
+  curl (from Terminal):
+  ```bash
+  curl -X POST http://localhost:3000/api/albums --data "name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop"
+  ```
 
-> Hint: If using postman to POST, set the body type to `x-www-form-urlencoded`, then add key-value pairs.
+  > Hint: If using postman to POST, set the body type to `x-www-form-urlencoded`, then add key-value pairs.
 
 
 
@@ -66,7 +66,7 @@ curl (from Terminal):
 
 1. On the server side, break the data we're getting from the `genre` field into an array.
 
-> Hint: the `split` method may be handy here.
+  > Hint: the `split` method may be handy here.
 
 ## Step 5: Fill in controller implementation for `create`.
 
@@ -74,7 +74,7 @@ curl (from Terminal):
 
 1. Test it!
 
-> Hint: if you get stuck here, take a look at the solution branch for sprint 2.
+  > Hint: if you get stuck here, take a look at the solution branch for sprint 2.
 
 ## Step 6: Display new album.
 
