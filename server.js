@@ -1,6 +1,8 @@
 const express = require("express");
 bodyParser = require("body-parser");
 
+//"-b" means to create a NEW branch
+//
 
 //generating new express app
 var app = express();
