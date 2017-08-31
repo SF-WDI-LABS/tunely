@@ -1,7 +1,7 @@
 const express = require("express");
-bodyParser = require("body-parser");
-
-
+const bodyParser = require("body-parser");
+const db = require("./models");
+const controllers = require("./controllers");
 //generating new express app
 var app = express();
 
@@ -14,7 +14,8 @@ app.use(express.static(__dirname + "/public"));
 app.get("/", function (req, res) {
   res.sendFile("/views/index.html", {root: __dirname});
 })
-
+// server.js
+app.get('/api', controllers.api.index);
 //listen on port 3000
 app.listen(process.env.PORT || 3000, function() {
   console.log("Tunely Application listening at http://localhost:3000");
