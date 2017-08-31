@@ -1,0 +1,27 @@
+{
+  "name": "tunely",
+  "version": "0.0.1",
+  "description": "Tunely Application",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcheng305/tunely.git"
+  },
+  "author": "Jimmy Cheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcheng305/tunely/issues"
+  },
+  "homepage": "https://github.com/jcheng305/tunely#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9"
+  }
+}
