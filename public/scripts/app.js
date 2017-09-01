@@ -6,6 +6,7 @@
  */
 
 
+
 /* hard-coded data! */
 var sampleAlbums = [];
 sampleAlbums.push({
