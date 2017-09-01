@@ -4,7 +4,7 @@
  * into functions and objects as needed.
  *
  */
-
+console.log("app.js connected");
 
 /* hard-coded data! */
 var sampleAlbums = [];
